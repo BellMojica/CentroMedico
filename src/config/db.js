@@ -1,7 +1,7 @@
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
-const sql = require("mssql");
+const sql = require('mssql');
 
 const isAzure = (process.env.DB_SERVER || '').includes('.database.windows.net');
 
@@ -24,7 +24,7 @@ const config = {
 
 const pool = new sql.ConnectionPool(config);
 pool.connect()
-  .then(() => console.log("✅ Conectado a SQL Server"))
-  .catch(err => console.error("❌ Error DB:", err));
+  .then(() => console.log('✅ Conectado a SQL Server'))
+  .catch(err => console.error('❌ Error DB:', err));
 
 module.exports = { sql, pool };

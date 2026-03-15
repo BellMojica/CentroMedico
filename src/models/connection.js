@@ -1,7 +1,14 @@
 const { sql, pool } = require('../config/db');
 
+const ensureConnected = async () => {
+    if (!pool.connected && !pool.connecting) {
+        await pool.connect();
+    }
+};
+
 const executeQuery = async (query, params = []) => {
     try {
+        await ensureConnected();
         const request = pool.request();
         params.forEach(param => {
             request.input(param.name, param.type, param.value);
@@ -16,6 +23,7 @@ const executeQuery = async (query, params = []) => {
 
 const executeStoredProcedure = async (procedureName, params = []) => {
     try {
+        await ensureConnected();
         const request = pool.request();
         params.forEach(param => {
             request.input(param.name, param.type, param.value);
