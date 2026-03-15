@@ -1,0 +1,22 @@
+# Render - Blueprint opcional
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: centro-medico-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      # Añade aquí las variables de SQL Server cuando tengas la DB en la nube:
+      # - key: DB_SERVER
+      #   sync: false
+      # - key: DB_USER
+      #   sync: false
+      # - key: DB_PASSWORD
+      #   sync: false
+      # - key: DB_NAME
+      #   sync: false

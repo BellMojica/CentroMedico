@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Médico - Login</title>
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <i class="fas fa-hospital"></i>
+                <h1>Centro Médico</h1>
+                <p>Ingresa tus credenciales</p>
+            </div>
+            <form id="login-form" autocomplete="on" aria-label="Formulario de inicio de sesión">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user" aria-hidden="true"></i> Usuario</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required autocomplete="username" aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock" aria-hidden="true"></i> Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required autocomplete="current-password" aria-required="true">
+                </div>
+                <div class="form-group remember-me">
+                    <label for="remember">
+                        <input type="checkbox" id="remember" aria-label="Recordar sesión">
+                        Recordarme
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" aria-label="Iniciar sesión">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Iniciar Sesión
+                </button>
+                <div class="login-error" id="login-error" role="alert" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
+    <script src="public/js/config.js"></script>
+    <script src="public/js/login.js"></script>
+</body>
+</html>

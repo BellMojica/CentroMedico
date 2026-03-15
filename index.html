@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Médico - Dashboard</title>
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-hospital"></i>
+            <span>Centro Médico</span>
+        </div>
+        <nav>
+            <a href="#" class="nav-item active" data-section="pacientes">
+                <i class="fas fa-users"></i>
+                <span>Pacientes</span>
+            </a>
+            <a href="#" class="nav-item" data-section="medicos">
+                <i class="fas fa-user-md"></i>
+                <span>Médicos</span>
+            </a>
+            <a href="#" class="nav-item" data-section="turnos">
+                <i class="fas fa-calendar-check"></i>
+                <span>Turnos</span>
+            </a>
+            <a href="#" class="nav-item" data-section="historias">
+                <i class="fas fa-file-medical"></i>
+                <span>Historias</span>
+            </a>
+            <a href="#" class="nav-item" data-section="especialidades">
+                <i class="fas fa-stethoscope"></i>
+                <span>Especialidades</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="user-name">Usuario</span>
+            </div>
+            <button type="button" class="btn btn-logout" id="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+            </button>
+        </div>
+    </div>
+    <main class="main-content">
+        <header class="content-header">
+            <h1 id="page-title">Pacientes</h1>
+            <div class="header-actions">
+                <input type="search" id="search" class="search-input" placeholder="Buscar..." aria-label="Buscar en la tabla">
+                <button type="button" class="btn btn-primary" id="btn-add" aria-label="Añadir nuevo">
+                    <i class="fas fa-plus" aria-hidden="true"></i> <span>Nuevo</span>
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-refresh" title="Actualizar datos" aria-label="Actualizar">
+                    <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                </button>
+            </div>
+        </header>
+        <div class="table-container">
+            <table class="data-table">
+                <thead id="table-head">
+                    <tr></tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr><td colspan="100%" class="empty-state"><i class="fas fa-spinner fa-spin"></i> Cargando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Formulario</h2>
+                <button type="button" class="btn-close" id="close-modal">&times;</button>
+            </div>
+            <form id="data-form"></form>
+        </div>
+    </div>
+    <script src="public/js/config.js"></script>
+    <script src="public/js/app.js"></script>
+</body>
+</html>
