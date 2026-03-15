@@ -1,4 +1,5 @@
-const { executeQuery, sql } = require('../models/connection');
+const { sql } = require('../config/db');
+const { executeQuery } = require('../models/connection');
 
 const getAll = async (req, res) => {
     try {

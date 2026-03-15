@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
-const { executeQuery, sql } = require('../models/connection');
+const { sql } = require('../config/db');
+const { executeQuery } = require('../models/connection');
 const { generateToken, generateRefreshToken } = require('../config/auth');
 
 const login = async (req, res) => {
