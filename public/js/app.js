@@ -42,7 +42,7 @@ const logout = () => {
     localStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
-    window.location.href = '/';
+    window.location.href = (window.APP_BASE || '/') === '/' ? '/' : (window.APP_BASE || '/') + 'login.html';
 };
 
 const getUser = () => {
@@ -58,7 +58,7 @@ const loadUserInfo = () => {
 };
 
 if (!isAuthenticated()) {
-    window.location.href = '/';
+    window.location.href = (window.APP_BASE || '/') === '/' ? '/' : (window.APP_BASE || '/') + 'login.html';
 }
 
 const sections = {

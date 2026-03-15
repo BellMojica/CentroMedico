@@ -48,7 +48,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
             sessionStorage.setItem('user', JSON.stringify(data.user));
         }
         
-        window.location.href = '/dashboard';
+        window.location.href = (window.APP_BASE || '/') === '/' ? '/dashboard' : (window.APP_BASE || '/');
         
     } catch (err) {
         errorDiv.textContent = err.message;
@@ -56,7 +56,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     }
 });
 
-const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+var token = localStorage.getItem('token') || sessionStorage.getItem('token');
 if (token) {
-    window.location.href = '/dashboard';
+    window.location.href = (window.APP_BASE || '/') === '/' ? '/dashboard' : (window.APP_BASE || '/');
 }
