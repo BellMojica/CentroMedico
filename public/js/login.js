@@ -1,4 +1,12 @@
-const API_URL = window.API_BASE_URL|| '/api';
+const API_URL = window.API_BASE_URL || '/api';
+
+function getBase() {
+    if (typeof window.getAppBase === 'function') return window.getAppBase();
+    var path = window.location.pathname;
+    if (path === '/' || path === '/dashboard' || path.startsWith('/dashboard/')) return '/';
+    var i = path.indexOf('/', 1);
+    return i > 0 ? path.substring(0, i + 1) : (path && path !== '/' ? path + '/' : '/');
+}
 
 function safeParseJson(response) {
     return response.text().then(function (text) {
@@ -48,7 +56,8 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
             sessionStorage.setItem('user', JSON.stringify(data.user));
         }
         
-        window.location.href = (window.APP_BASE || '/') === '/' ? '/dashboard' : (window.APP_BASE || '/');
+        var base = getBase();
+        window.location.href = base === '/' ? '/dashboard' : base;
         
     } catch (err) {
         errorDiv.textContent = err.message;
@@ -58,5 +67,6 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
 var token = localStorage.getItem('token') || sessionStorage.getItem('token');
 if (token) {
-    window.location.href = (window.APP_BASE || '/') === '/' ? '/dashboard' : (window.APP_BASE || '/');
+    var base = getBase();
+    window.location.href = base === '/' ? '/dashboard' : base;
 }

@@ -36,13 +36,22 @@ const isAuthenticated = () => {
     return localStorage.getItem('token') || sessionStorage.getItem('token');
 };
 
+function getBase() {
+    if (typeof window.getAppBase === 'function') return window.getAppBase();
+    var path = window.location.pathname;
+    if (path === '/' || path === '/dashboard' || path.startsWith('/dashboard/')) return '/';
+    var i = path.indexOf('/', 1);
+    return i > 0 ? path.substring(0, i + 1) : (path && path !== '/' ? path + '/' : '/');
+}
+
 const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
-    window.location.href = (window.APP_BASE || '/') === '/' ? '/' : (window.APP_BASE || '/') + 'login.html';
+    var base = getBase();
+    window.location.href = base === '/' ? '/' : base + 'login.html';
 };
 
 const getUser = () => {
@@ -58,7 +67,8 @@ const loadUserInfo = () => {
 };
 
 if (!isAuthenticated()) {
-    window.location.href = (window.APP_BASE || '/') === '/' ? '/' : (window.APP_BASE || '/') + 'login.html';
+    var base = getBase();
+    window.location.href = base === '/' ? '/' : base + 'login.html';
 }
 
 const sections = {
